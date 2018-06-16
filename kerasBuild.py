@@ -49,12 +49,12 @@ learning_rate_reduction = ReduceLROnPlateau(monitor='val_acc',
                                             factor=0.5, 
                                             min_lr=0.00001)
 epochs = 300 # Turn epochs to 30 to get 0.9967 accuracy
-batch_size = 64
+batch_size = 32
 
-model.fit(X_train,Y_train,epochs=50,batch_size=64)
+model.fit(X_train,Y_train,epochs=150,batch_size=32)
 print(model.summary())
 
 coreml_device = coremltools.converters.keras.convert(model)
 print(coreml_device)
 
-coreml_device.save('test.mlmodel')
+coreml_device.save('gravitytoclockposition.mlmodel')
